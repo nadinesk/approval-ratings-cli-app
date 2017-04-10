@@ -14,6 +14,7 @@ class NowPlaying::Movie
 
     @@all ||= scrape_now_playing
 
+    binding.pry
   end
 
   def self.find(id)
@@ -45,11 +46,11 @@ class NowPlaying::Movie
       pollsters = []
       doc.css("td.pollster").each do |pollster|
         pollster_name = pollster.css("a").text
-        puts "pollster #{pollster}"
-        pollsters << pollster_name
+        # puts "pollster #{pollster}"
+        pollsters << pollster_name unless pollsters.include?(pollster_name)
       end
+      pollsters
 
-      binding.pry
     end
 
     def plot_summary_doc
