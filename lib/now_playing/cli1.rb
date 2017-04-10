@@ -18,9 +18,17 @@ class NowPlaying::CLI1
     puts ""
     puts "-------------- #{movie.name} --------------"
 
+    puts "pollster grade"
+    puts movie.summary
     puts ""
-    puts movie.name
+    puts "approval rating"
+    puts movie.approval
     puts ""
+    puts "disapproval rating"
+    puts movie.disapproval
+    puts ""
+
+
 
     #puts "Starring: #{movie.stars}"
     #puts ""
