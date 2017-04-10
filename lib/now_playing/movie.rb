@@ -4,12 +4,11 @@ require 'openssl'
 
 class NowPlaying::Movie
 
-  attr_accessor :name, :url, :summary, :stars
+  attr_accessor :name, :date, :url, :summary, :stars
 
-  def initialize(name = nil)
+  def initialize(name = nil, date = nil)
     @name = name
-
-
+    @date = date
   end
 
   def self.all
@@ -45,15 +44,15 @@ class NowPlaying::Movie
       #names.collect{|e| new(e.text.strip, "http://imdb.com#{e.attr("href").split("?").first.strip}")}
 
       pollsters = []
-      doc.css("td.pollster").each do |pollster|
-        pollster_name = pollster.css("a").text
+      doc.css("tbody tr").each do |pollster|
+        pollster_name = pollster.css(".pollster a").text
+        pollster_date = pollster.css(".dates").text
         # puts "pollster #{pollster}"
-        new_pollster = new(pollster_name)
+        new_pollster = new(pollster_name, pollster_date)
         pollsters << new_pollster unless pollsters.include?(new_pollster.name)
 
       end
       pollsters
-
 
     end
 

@@ -8,9 +8,8 @@ class NowPlaying::CLI
     puts ""
     puts "************* Now Playing in Theatres *************"
     puts ""
-    binding.pry
     NowPlaying::Movie.all.each.with_index(1) do |movie, i|
-
+      
       puts "#{i}. #{movie.name}"
 
     end
