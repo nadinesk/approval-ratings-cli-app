@@ -1,5 +1,5 @@
 require 'pry'
-class NowPlaying::CLI
+class NowPlaying::CLI1
   def call
     start
   end
@@ -9,8 +9,7 @@ class NowPlaying::CLI
     puts "************* Now Playing in Theatres *************"
     puts ""
     NowPlaying::Movie.all.each.with_index(1) do |movie, i|
-      puts "#{i}. #{movie.name}"
-
+      puts "#{i}. #{movie.name}" unless i > 20
     end
     puts ""
   end
@@ -29,7 +28,7 @@ class NowPlaying::CLI
 
   def start
     list
-
     puts "Goodbye!!!"
-  
+
+  end
 end

@@ -2,4 +2,4 @@
 
 require_relative '../lib/now_playing'
 
-NowPlaying::CLI.new.call
+NowPlaying::CLI1.new.call

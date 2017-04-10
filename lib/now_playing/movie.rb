@@ -1,12 +1,14 @@
 require 'pry'
 require 'openssl'
    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
 class NowPlaying::Movie
+
   attr_accessor :name, :url, :summary, :stars
 
-  def initialize(name = nil, url = nil)
+  def initialize(name = nil)
     @name = name
-    @url = url
+
 
   end
 
@@ -14,7 +16,6 @@ class NowPlaying::Movie
 
     @@all ||= scrape_now_playing
 
-    binding.pry
   end
 
   def self.find(id)
@@ -47,9 +48,12 @@ class NowPlaying::Movie
       doc.css("td.pollster").each do |pollster|
         pollster_name = pollster.css("a").text
         # puts "pollster #{pollster}"
-        pollsters << pollster_name unless pollsters.include?(pollster_name)
+        new_pollster = new(pollster_name)
+        pollsters << new_pollster unless pollsters.include?(new_pollster.name)
+
       end
       pollsters
+
 
     end
 
