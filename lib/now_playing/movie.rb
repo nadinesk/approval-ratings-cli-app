@@ -1,6 +1,6 @@
 require 'pry'
-require 'openssl'
-   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+#require 'openssl'
+ #  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 class NowPlaying::Movie
 
@@ -49,18 +49,20 @@ class NowPlaying::Movie
       #names.collect{|e| new(e.text.strip, "http://imdb.com#{e.attr("href").split("?").first.strip}")}
 
       pollsters = []
-      doc.css("tbody tr").each do |pollster|
-        pollster_name = pollster.css(".pollster a").text
-        pollster_date = pollster.css(".dates").text
+      doc.css("tbody tr.hidden[data-subgroup='Adults']").each do |pollster|
+        pollster_name = pollster.css("td.pollster a").text
+        pollster_date = pollster.css("td.dates").text
         pollster_summary = pollster.css("div.gradeText").text
         pollster_approval = pollster.at_css("td.answer.first").text
-        pollster_disapproval = pollster.css("td.adjusted, td.last").text
+        pollster_disapproval = pollster.at_css("td.answer.last").text
         # puts "pollster #{pollster}"
         new_pollster = new(pollster_name, pollster_date, pollster_summary, pollster_approval, pollster_disapproval)
         pollsters << new_pollster unless pollsters.include?(new_pollster.name)
 
       end
       pollsters
+
+
 
 
     end
