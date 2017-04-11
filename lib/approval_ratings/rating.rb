@@ -18,7 +18,7 @@ class ApprovalRatings::Rating
 
   def self.all
 
-    @@all ||= scrape_now_playing
+    @@all ||= scrape_approval_ratings
 
   end
 
@@ -27,16 +27,7 @@ class ApprovalRatings::Rating
   end
 
   def self.find_by_name(name)
-    #self.all.find_all do |m|
-     # m.name.downcase.strip == name.downcase.strip ||
-      #m.name.split("(").first.strip.downcase == name.downcase.strip
-
-    #end
-
-
     self.all.find_all { |i|  i.name.downcase.strip == name.downcase.strip }  
-    
-
   end
 
 

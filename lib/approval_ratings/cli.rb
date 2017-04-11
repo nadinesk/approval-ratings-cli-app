@@ -6,51 +6,51 @@ class ApprovalRatings::CLI
 
   def list
     puts ""
-    puts "************* Now Playing in Theatres *************"
+    puts "************* President Trump Approval Ratings *************"
     puts ""
-    ApprovalRatings::Rating.all.each.with_index(1) do |movie, i|
-      puts "#{i}. #{movie.name} on #{movie.date}" 
+    ApprovalRatings::Rating.all.each.with_index(1) do |rating, i|
+      puts "#{i}. #{rating.name} on #{rating.date}" 
     end
     puts ""
   end
 
-  def print_movie(movie)
-    movie.each do |movie|
+  def print_rating(rating)
+    rating.each do |rating|
 
       puts ""
-      puts "-------------- #{movie.name} --------------"
+      puts "-------------- #{rating.name} --------------"
 
       puts ""
       puts "poll date"
-      puts movie.date
+      puts rating.date
       puts "pollster grade"
-      puts movie.summary
+      puts rating.summary
       puts ""
       puts "approval rating"
-      puts movie.approval
+      puts rating.approval
       puts ""
       puts "disapproval rating"
-      puts movie.disapproval
+      puts rating.disapproval
       puts ""
     end
   end
 
-  def print_movie_i(movie)   
+  def print_rating_i(rating)   
 
       puts ""
-      puts "-------------- #{movie.name} --------------"
+      puts "-------------- #{rating.name} --------------"
 
       puts ""
       puts "poll date"
-      puts movie.date
+      puts rating.date
       puts "pollster grade"
-      puts movie.summary
+      puts rating.summary
       puts ""
       puts "approval rating"
-      puts movie.approval
+      puts rating.approval
       puts ""
       puts "disapproval rating"
-      puts movie.disapproval
+      puts rating.disapproval
       puts ""
     
   end
@@ -60,9 +60,9 @@ class ApprovalRatings::CLI
     input = nil
     while input != "exit"
       puts ""
-      puts "What movie would you more information on, by name or number?"
+      puts "What poll would you more information on, by name or number?"
       puts ""
-      puts "Enter list to see the movies again."
+      puts "Enter list to see the polls again."
       puts "Enter exit to end the program."
       puts ""
       input = gets.strip
@@ -71,14 +71,14 @@ class ApprovalRatings::CLI
       
 
       elsif input.to_i == 0
-        if movie = ApprovalRatings::Rating.find_by_name(input)
-          puts "#{movie}"
-          print_movie(movie)
+        if rating = ApprovalRatings::Rating.find_by_name(input)
+          puts "#{rating}"
+          print_rating(rating)
           
         end 
       elsif input.to_i > 0
-        if movie = ApprovalRatings::Rating.find(input.to_i)
-          print_movie_i(movie)
+        if rating = ApprovalRatings::Rating.find(input.to_i)
+          print_rating_i(rating)
         end
       end
     end
