@@ -13,13 +13,10 @@ class ApprovalRatings::Rating
     @approval = approval
     @disapproval = disapproval
     @url = 'https://projects.fivethirtyeight.com/trump-approval-ratings/'
-
   end
 
   def self.all
-
     @@all ||= scrape_approval_ratings
-
   end
 
   def self.find(id)
@@ -30,14 +27,10 @@ class ApprovalRatings::Rating
     self.all.find_all { |i|  i.name.downcase.strip == name.downcase.strip }  
   end
 
-
-  
-
   private
     
     def self.scrape_approval_ratings
-      doc = Nokogiri::HTML(open('https://projects.fivethirtyeight.com/trump-approval-ratings/'))
-    
+      doc = Nokogiri::HTML(open('https://projects.fivethirtyeight.com/trump-approval-ratings/'))    
       pollsters = []
       doc.css("tbody tr.hidden[data-subgroup='Adults']").each do |pollster|
         pollster_name = pollster.css("td.pollster a").text
@@ -53,7 +46,6 @@ class ApprovalRatings::Rating
       pollsters
       
     end
-
     
     def doc
       @doc ||= Nokogiri::HTML(open(self.url))

@@ -19,10 +19,9 @@ class ApprovalRatings::CLI
 
       puts ""
       puts "-------------- #{rating.name} --------------"
-
-      puts ""
-      puts "poll date"
+      puts "poll date"      
       puts rating.date
+      puts ""
       puts "pollster grade"
       puts rating.summary
       puts ""
@@ -38,11 +37,10 @@ class ApprovalRatings::CLI
   def print_rating_i(rating)   
 
       puts ""
-      puts "-------------- #{rating.name} --------------"
-
-      puts ""
-      puts "poll date"
+      puts "-------------- #{rating.name} --------------"      
+      puts "poll date"      
       puts rating.date
+      puts ""
       puts "pollster grade"
       puts rating.summary
       puts ""
@@ -68,11 +66,8 @@ class ApprovalRatings::CLI
       input = gets.strip
       if input == "list"
         list
-      
-
       elsif input.to_i == 0
-        if rating = ApprovalRatings::Rating.find_by_name(input)
-          puts "#{rating}"
+        if rating = ApprovalRatings::Rating.find_by_name(input)          
           print_rating(rating)
           
         end 
