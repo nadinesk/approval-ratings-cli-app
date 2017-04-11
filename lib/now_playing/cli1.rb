@@ -9,29 +9,50 @@ class NowPlaying::CLI1
     puts "************* Now Playing in Theatres *************"
     puts ""
     NowPlaying::Movie.all.each.with_index(1) do |movie, i|
-      puts "#{i}. #{movie.name} on #{movie.date}" unless i > 20
+      puts "#{i}. #{movie.name} on #{movie.date}" 
     end
     puts ""
   end
 
   def print_movie(movie)
-    puts ""
-    puts "-------------- #{movie.name} --------------"
+    movie.each do |movie|
 
-    puts "pollster grade"
-    puts movie.summary
-    puts ""
-    puts "approval rating"
-    puts movie.approval
-    puts ""
-    puts "disapproval rating"
-    puts movie.disapproval
-    puts ""
+      puts ""
+      puts "-------------- #{movie.name} --------------"
 
+      puts ""
+      puts "poll date"
+      puts movie.date
+      puts "pollster grade"
+      puts movie.summary
+      puts ""
+      puts "approval rating"
+      puts movie.approval
+      puts ""
+      puts "disapproval rating"
+      puts movie.disapproval
+      puts ""
+    end
+  end
 
+  def print_movie_i(movie)   
 
-    #puts "Starring: #{movie.stars}"
-    #puts ""
+      puts ""
+      puts "-------------- #{movie.name} --------------"
+
+      puts ""
+      puts "poll date"
+      puts movie.date
+      puts "pollster grade"
+      puts movie.summary
+      puts ""
+      puts "approval rating"
+      puts movie.approval
+      puts ""
+      puts "disapproval rating"
+      puts movie.disapproval
+      puts ""
+    
   end
 
   def start
@@ -47,13 +68,17 @@ class NowPlaying::CLI1
       input = gets.strip
       if input == "list"
         list
+      
+
       elsif input.to_i == 0
         if movie = NowPlaying::Movie.find_by_name(input)
+          puts "#{movie}"
           print_movie(movie)
-        end
+          
+        end 
       elsif input.to_i > 0
         if movie = NowPlaying::Movie.find(input.to_i)
-          print_movie(movie)
+          print_movie_i(movie)
         end
       end
     end

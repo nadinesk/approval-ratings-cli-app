@@ -27,10 +27,16 @@ class NowPlaying::Movie
   end
 
   def self.find_by_name(name)
-    self.all.detect do |m|
-      m.name.downcase.strip == name.downcase.strip ||
-      m.name.split("(").first.strip.downcase == name.downcase.strip
-    end
+    #self.all.find_all do |m|
+     # m.name.downcase.strip == name.downcase.strip ||
+      #m.name.split("(").first.strip.downcase == name.downcase.strip
+
+    #end
+
+
+    self.all.find_all { |i|  i.name.downcase.strip == name.downcase.strip }  
+    
+
   end
 
   #def summary
@@ -57,11 +63,11 @@ class NowPlaying::Movie
         pollster_disapproval = pollster.at_css("td.answer.last").text
         # puts "pollster #{pollster}"
         new_pollster = new(pollster_name, pollster_date, pollster_summary, pollster_approval, pollster_disapproval)
-        pollsters << new_pollster unless pollsters.include?(new_pollster.name)
+        pollsters << new_pollster unless pollsters.include?(new_pollster.name) || pollsters.size > 19
 
       end
       pollsters
-
+      
 
 
 
