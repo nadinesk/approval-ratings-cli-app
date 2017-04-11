@@ -1,6 +1,6 @@
 require 'pry'
-#require 'openssl'
- #  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+require 'openssl'
+   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 class ApprovalRatings::Rating
 
@@ -24,13 +24,13 @@ class ApprovalRatings::Rating
   end
 
   def self.find_by_name(name)
-    self.all.find_all { |i|  i.name.downcase.strip == name.downcase.strip }  
+    self.all.find_all { |i|  i.name.downcase.strip == name.downcase.strip }
   end
 
   private
-    
+
     def self.scrape_approval_ratings
-      doc = Nokogiri::HTML(open('https://projects.fivethirtyeight.com/trump-approval-ratings/'))    
+      doc = Nokogiri::HTML(open('https://projects.fivethirtyeight.com/trump-approval-ratings/'))
       pollsters = []
       doc.css("tbody tr.hidden[data-subgroup='Adults']").each do |pollster|
         pollster_name = pollster.css("td.pollster a").text
@@ -44,9 +44,9 @@ class ApprovalRatings::Rating
 
       end
       pollsters
-      
+
     end
-    
+
     def doc
       @doc ||= Nokogiri::HTML(open(self.url))
     end
