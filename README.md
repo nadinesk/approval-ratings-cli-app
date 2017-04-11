@@ -8,8 +8,7 @@ You can install this gem via `gem install approval-ratings-cli-app`. The `approv
 
 ## Usage
 
-Run: `approval-ratings` afer installing the gem. You might need to run `bundle install` before running, and if nokogiri gem installation gives an error, do `gem install nokogiri`. 
-
+Run: `approval-ratings` afer installing the gem. 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub [here](https://github.com/nadinesk/approval-ratings-cli-app). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
