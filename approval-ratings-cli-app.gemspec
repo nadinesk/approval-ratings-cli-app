@@ -8,13 +8,11 @@ Gem::Specification.new do |spec|
   spec.email         = ["nfischoff@learn.co"]
   spec.description   = %q{Pres Approval Ratings}
   spec.summary       = %q{Pres Approval Ratings}
-  spec.homepage      = "https://learn.co"
-
+  
   spec.files         = `git ls-files`.split($\)
-  spec.executables   = ["approval-ratings"]
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.name          = "approval-ratings-cli-gem"
-  spec.require_paths = ["lib", "lib/now_playing"]
+  spec.executables   = ["approval-ratings"]  
+  spec.name          = "approval-ratings-cli-app"
+  spec.require_paths = ["lib", "lib/approval_ratings"]
   spec.version       = ApprovalRatings::VERSION
   spec.license       = "MIT"
 

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    now-playing-cli-gem (0.1.0)
+    approval-rating-cli-app (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -51,7 +51,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.10)
   nokogiri
-  now-playing-cli-gem!
+  approval-ratings-cli-app!
   pry
   rake (~> 10.0)
   rspec
