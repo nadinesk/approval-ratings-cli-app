@@ -1,33 +1,18 @@
 # Approval::Ratings::Cli::Gem
 
-
-## Steps (tentative)
-* find site from which to scrape
-* inspect elements to see if can use it
-* use structure of now playing
-* iterate through td's
-* using binding.pry to determine elements on which to iterate
-* fix duplicates issue in list
-* fix find_by_name to return duplicates
-* create additional function for printing list of finding_by_number, which is now different from find_by_name because it only returns one vs potentialy > 1 for find_by_name
-* fix array length sent to CLI instead of limiting the size of the list in the CLI, because the find_by_name will only return values for those on list, instead of all possible without truncating array
-* gemspec
-* publish gem
-
+[![Gem Version](https://badge.fury.io/rb/approval-ratings-cli-app.svg)](https://rubygems.org/gems/approval-ratings-cli-app)
 
 ## Installation
 
+You can install this gem via `gem install approval-ratings-cli-app`. The `approval-ratings` CLI will be installed and you can run `approval-ratings` to get a list of 20 recent polls taken that measure Donald Trump's approval rating. The polls are provided from [FiveThirtyEight](https://projects.fivethirtyeight.com/trump-approval-ratings/).
 
 ## Usage
 
-
-
-## Development
-
-
+Run: `approval-ratings` afer installing the gem. 
 ## Contributing
 
-
+Bug reports and pull requests are welcome on GitHub [here](https://github.com/nadinesk/approval-ratings-cli-app). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 ## License
 
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
