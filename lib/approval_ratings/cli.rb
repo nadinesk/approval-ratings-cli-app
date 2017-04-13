@@ -2,6 +2,7 @@ require 'pry'
 class ApprovalRatings::CLI
   def call
     start
+
   end
 
   def list
@@ -54,6 +55,7 @@ class ApprovalRatings::CLI
   end
 
   def start
+    ApprovalRatings::Scraper.scrape_approval_ratings
     list
     input = nil
     while input != "exit"

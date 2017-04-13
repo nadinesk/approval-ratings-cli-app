@@ -11,6 +11,7 @@
 * fix find_by_name to return duplicates
 * create additional function for printing list of finding_by_number, which is now different from find_by_name because it only returns one vs potentialy > 1 for find_by_name
 * fix array length sent to CLI instead of limiting the size of the list in the CLI, because the find_by_name will only return values for those on list, instead of all possible without truncating array
+* gemspec
 * publish gem
 
 
